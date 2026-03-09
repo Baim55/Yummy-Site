@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.bg-img {
+  background-image: url(img/stats-bg.jpg);
+  background-size: cover;
+  background-position: center;
+}
+.bg-img::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.roboto {
+  font-family: "Roboto", sans-serif;
+}
+.amatic {
+  font-family: "Amatic SC", sans-serif;
+}
+nav ul a::before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  bottom: -6px;
+  left: 0;
+  background-color: #ce1212;
+  visibility: hidden;
+  width: 0px;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+nav ul a:hover::before {
+  visibility: visible;
+  width: 100%;
+}
+nav ul a.active::before {
+  visibility: visible;
+  width: 100%;
+}
+
+.eat ul a::before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  bottom: -6px;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.293);
+  width: 100%;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.eat ul a:hover::before {
+  background-color: #ce1212;
+}
+
+.eat ul a.active::before {
+  background-color: #ce1212;
+}
+
+@keyframes up-down {
+  to {
+    transform: translateY(14px);
+  }
+}
+.animated {
+  animation: up-down 1.5s ease-in-out infinite alternate-reverse both;
+}
