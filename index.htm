@@ -12,12 +12,16 @@
       referrerpolicy="no-referrer"
     />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4/dist/css/splide.min.css"
+    />
     <link rel="stylesheet" href="src/output.css" />
     <link rel="stylesheet" href="src/style.css" />
     <title>Yummy</title>
   </head>
   <body>
-    <header class="fixed left-0 top-0 right-0 bg-white z-10">
+    <header class="fixed left-0 top-0 right-0 bg-white z-50">
       <nav class="container px-3 py-5 lg:px-0 roboto">
         <div class="lg:hidden flex items-center justify-between">
           <div>
@@ -31,8 +35,49 @@
               class="py-2 px-[26px] bg-[#ce1212] hover:bg-[#d53535] duration-200 text-white text-[14px] font-semibold rounded-3xl"
               >Book a Table</a
             >
-            <i class="fa-solid fa-bars text-[24px] text-[#7f7f90]"></i>
+            <i
+              class="fa-solid fa-bars text-[24px] text-[#7f7f90]"
+              onclick="menuOpen()"
+            ></i>
           </div>
+        </div>
+        <div
+          id="menubar"
+          style="right: -100%"
+          class="mobilmenu-list transition-[right] duration-500 ease-in-out bg-white fixed top-0 right-0 h-[100%] w-[300px] z-999"
+        >
+          <div class="flex justify-end mt-5 mr-5">
+            <i
+              onclick="menuOpen()"
+              class="fa-solid fa-x text-black text-[27px] cursor-pointer"
+            ></i>
+          </div>
+          <ul class="flex flex-col justify-between text-black px-[20px]">
+            <li class="py-[10px] px-[15px] text-[14px]">
+              <a href="">Home</a>
+            </li>
+            <li class="py-[10px] px-[15px] text-[14px]">
+              <a href="">About</a>
+            </li>
+            <li class="py-[10px] px-[15px] text-[14px]">
+              <a href="">Menu</a>
+            </li>
+            <li class="py-[10px] px-[15px] text-[14px]">
+              <a href="">Events</a>
+            </li>
+            <li class="py-[10px] px-[15px] text-[14px]">
+              <a href="">Chefs</a>
+            </li>
+            <li class="py-[10px] px-[15px] text-[14px]">
+              <a href="">Gallery</a>
+            </li>
+            <li class="py-[10px] px-[15px] text-[14px]">
+              <a href="">Dropdown</a>
+            </li>
+            <li class="py-[10px] px-[15px] text-[14px]">
+              <a href="">Contact</a>
+            </li>
+          </ul>
         </div>
         <div class="hidden lg:flex items-center justify-between">
           <div>
@@ -41,48 +86,7 @@
             </h1>
           </div>
           <div>
-            <ul class="flex items-center justify-between">
-              <li class="text-[#4e4e59] py-[15px] px-[14px] font-medium">
-                <a href="" class="relative px-[2px] active">Home</a>
-              </li>
-              <li
-                class="text-[#7f7f90] py-[15px] px-[14px] font-medium hover:text-[#4e4e59] duration-200"
-              >
-                <a href="" class="relative px-[2px]">About</a>
-              </li>
-              <li
-                class="text-[#7f7f90] py-[15px] px-[14px] font-medium hover:text-[#4e4e59] duration-200"
-              >
-                <a href="" class="relative px-[2px]">Menu</a>
-              </li>
-              <li
-                class="text-[#7f7f90] py-[15px] px-[14px] font-medium hover:text-[#4e4e59] duration-200"
-              >
-                <a href="" class="relative px-[2px]">Events</a>
-              </li>
-              <li
-                class="text-[#7f7f90] py-[15px] px-[14px] font-medium hover:text-[#4e4e59] duration-200"
-              >
-                <a href="" class="relative px-[2px]">Chefs</a>
-              </li>
-              <li
-                class="text-[#7f7f90] py-[15px] px-[14px] font-medium hover:text-[#4e4e59] duration-200"
-              >
-                <a href="" class="relative px-[2px]">Gallery</a>
-              </li>
-              <li
-                class="text-[#7f7f90] py-[15px] px-[14px] font-medium hover:text-[#4e4e59] duration-200"
-              >
-                <a href="" class="relative px-[2px]"
-                  >Dropdown<i class="fa-solid fa-chevron-down text-[12px]"></i
-                ></a>
-              </li>
-              <li
-                class="text-[#7f7f90] py-[15px] px-[14px] font-semibold hover:text-[#4e4e59] duration-200"
-              >
-                <a href="" class="relative px-[2px]">Contact</a>
-              </li>
-            </ul>
+            <ul id="list" class="flex items-center justify-between"></ul>
           </div>
           <div>
             <a
@@ -353,118 +357,409 @@
           <h1 class="text-[#909294] uppercase text-[13px] font-medium">Menu</h1>
           <p class="text-[#ce1212] text-[48px] amatic mb-[8px]">Starters</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div
+          id="eat"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+        ></div>
+      </section>
+      <section class="py-[60px] px-[12px] lg:px-0 bg-[#f2f2f2]">
+        <div class="max-w-[900px] mx-auto">
+          <div class="flex flex-col items-center mb-[65px]">
+            <h1 class="text-[#909294] uppercase text-[13px] font-medium">
+              Testimonials
+            </h1>
+            <p class="text-[#37373f] text-[48px] mt-[10px] amatic text-center">
+              What Are They <span class="text-[#ce1212]">Saying About Us</span>
+            </p>
+          </div>
+
           <div
-            class="mt-[50px] px-[12px] flex flex-col items-center text-center"
+            id="default-carousel"
+            class="relative w-full"
+            data-carousel="slide"
           >
+            <div
+              id="slider"
+              class="relative h-170 lg:h-72 overflow-hidden rounded-base"
+            ></div>
+            <div
+              class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse"
+            >
+              <button
+                type="button"
+                class="w-3 h-3 rounded-full bg-gray-300 aria-[current=true]:bg-[#ce1212]"
+                aria-current="true"
+                aria-label="Slide 1"
+                data-carousel-slide-to="0"
+              ></button>
+              <button
+                type="button"
+                class="w-3 h-3 rounded-full bg-gray-300 aria-[current=true]:bg-[#ce1212]"
+                aria-current="false"
+                aria-label="Slide 2"
+                data-carousel-slide-to="1"
+              ></button>
+              <button
+                type="button"
+                class="w-3 h-3 rounded-full bg-gray-300 aria-[current=true]:bg-[#ce1212]"
+                aria-current="false"
+                aria-label="Slide 3"
+                data-carousel-slide-to="2"
+              ></button>
+              <button
+                type="button"
+                class="w-3 h-3 rounded-full bg-gray-300 aria-[current=true]:bg-[#ce1212]"
+                aria-current="false"
+                aria-label="Slide 4"
+                data-carousel-slide-to="3"
+              ></button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="py-[60px]">
+        <div class="splide" id="party-slider">
+          <div class="splide__track">
+            <ul id="eventsData" class="splide__list"></ul>
+          </div>
+        </div>
+      </section>
+      <section class="py-[60px] px-[12px] lg:px-0 overflow-hidden">
+        <div class="container">
+          <div class="flex flex-col items-center mb-[65px]">
+            <h1 class="text-[#909294] uppercase text-[13px] font-medium">
+              chefs
+            </h1>
+            <p class="text-[#37373f] text-[48px] mt-[10px] amatic text-center">
+              Our <span class="text-[#ce1212]">Proffesional Chefs</span>
+            </p>
+          </div>
+          <div
+            id="chefsData"
+            class="grid grid-cols-1 lg:grid-cols-3 gap-8"
+          ></div>
+        </div>
+      </section>
+      <section class="py-[60px] px-[12px] lg:px-0">
+        <div class="container">
+          <div class="flex flex-col items-center mb-[65px]">
+            <h1 class="text-[#909294] uppercase text-[13px] font-medium">
+              Book A Table
+            </h1>
+            <p class="text-[#37373f] text-[48px] mt-[10px] amatic text-center">
+              Book Your <span class="text-[#ce1212]">Stay With Us</span>
+            </p>
+          </div>
+          <div class="grid grid-cols-1 lg:grid-cols-3">
             <img
-              src="src/img/menu-item-1.png"
+              src="src/img/reservation.jpg"
               alt=""
-              class="px-[60px] mb-[15px]"
+              class="w-full max-h-[500px] object-cover"
             />
-            <div>
-              <h4 class="mb-[5px] text-[24px] font-bold">Magnam Tiste</h4>
-              <p class="mb-[5px] text-[#909294]">
-                Lorem, deren, trataro, filede, nerada
-              </p>
-              <p class="mb-[16px] text-[24px] text-[#ce1212] font-bold">
-                $5.95
-              </p>
+            <div class="lg:col-span-2 bg-[#f8f8f8] p-[30px]">
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                <div class="px-[12px] mt-[24px]">
+                  <input
+                    type="text"
+                    placeholder="Your Name"
+                    class="w-full bg-white py-[10px] px-[15px] border-2 border-[#cdcdce] focus:border-[#ce1212] duration-100 outline-none"
+                  />
+                </div>
+                <div class="px-[12px] mt-[24px]">
+                  <input
+                    type="email"
+                    placeholder="Your Email"
+                    class="w-full bg-white py-[10px] px-[15px] border-2 border-[#cdcdce] focus:border-[#ce1212] duration-100 outline-none"
+                  />
+                </div>
+                <div class="px-[12px] mt-[24px]">
+                  <input
+                    type="text"
+                    placeholder="Your Phone"
+                    class="w-full bg-white py-[10px] px-[15px] border-2 border-[#cdcdce] focus:border-[#ce1212] duration-100 outline-none"
+                  />
+                </div>
+                <div class="px-[12px] mt-[24px]">
+                  <input
+                    type="date"
+                    class="w-full bg-white py-[10px] px-[15px] border-2 border-[#cdcdce] focus:border-[#ce1212] duration-100 outline-none"
+                  />
+                </div>
+                <div class="px-[12px] mt-[24px]">
+                  <input
+                    type="time"
+                    class="w-full bg-white py-[10px] px-[15px] border-2 border-[#cdcdce] focus:border-[#ce1212] duration-100 outline-none"
+                  />
+                </div>
+                <div class="px-[12px] mt-[24px]">
+                  <input
+                    type="text"
+                    placeholder="# of people"
+                    class="w-full bg-white py-[10px] px-[15px] border-2 border-[#cdcdce] focus:border-[#ce1212] duration-100 outline-none"
+                  />
+                </div>
+              </div>
+              <div class="px-[12px] mt-[24px]">
+                <textarea
+                  class="w-full h-[150px] bg-white py-[10px] px-[15px] border-2 border-[#cdcdce] focus:border-[#ce1212] duration-100 outline-none"
+                  placeholder="Message"
+                ></textarea>
+              </div>
+              <div class="flex items-center justify-center mt-[16px]">
+                <button
+                  class="py-[14px] px-[60px] text-white bg-[#ce1212] rounded-[5px] hover:bg-[#d53535] duration-200"
+                >
+                  Book a Table
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="py-[60px] px-[12px] lg:px-0 bg-[#f2f2f2]">
+        <div class="container">
+          <div class="flex flex-col items-center mb-[65px]">
+            <h1 class="text-[#909294] uppercase text-[13px] font-medium">
+              Gallery
+            </h1>
+            <p class="text-[#37373f] text-[48px] mt-[10px] amatic text-center">
+              Check <span class="text-[#ce1212]">Our Gallery</span>
+            </p>
+          </div>
+
+          <div id="gallery-slider" class="splide overflow-visible">
+            <div class="splide__track">
+              <ul id="galleryData" class="splide__list"></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="py-[60px] px-[12px] lg:px-0">
+        <div class="container">
+          <div class="flex flex-col items-center mb-[65px]">
+            <h1 class="text-[#909294] uppercase text-[13px] font-medium">
+              Contact
+            </h1>
+            <p class="text-[#37373f] text-[48px] mt-[10px] amatic text-center">
+              Need Help? <span class="text-[#ce1212]">Contact Us</span>
+            </p>
+          </div>
+          <div class="mb-[30px]">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20436.058015203915!2d49.84622218366602!3d40.41243504779986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d5d5a2c1005%3A0x5ede1cc1418ccc54!2sG%C9%99nclik%20Mall!5e0!3m2!1saz!2saz!4v1773210778976!5m2!1saz!2saz"
+              width="100%"
+              height="400"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+            <div
+              class="shadow-[0px_7px_29px_0px_rgba(100,100,111,0.2)] flex items-center py-[20px] px-[30px]"
+            >
+              <div
+                class="mr-[15px] w-[56px] h-[56px] rounded-full flex items-center justify-center bg-[#ce1212]"
+              >
+                <i class="fa-solid fa-location-dot text-2xl text-white"></i>
+              </div>
+              <div>
+                <h3 class="text-[#636669] mb-[5px] text-[20px] font-medium">
+                  Address
+                </h3>
+                <p>A108 Adam Street, New York, NY 535022</p>
+              </div>
+            </div>
+            <div
+              class="shadow-[0px_7px_29px_0px_rgba(100,100,111,0.2)] flex items-center py-[20px] px-[30px]"
+            >
+              <div
+                class="mr-[15px] w-[56px] h-[56px] rounded-full flex items-center justify-center bg-[#ce1212]"
+              >
+                <i class="fa-solid fa-phone text-2xl text-white"></i>
+              </div>
+              <div>
+                <h3 class="text-[#636669] mb-[5px] text-[20px] font-medium">
+                  Call Us
+                </h3>
+                <p>+1 5589 55488 55</p>
+              </div>
+            </div>
+            <div
+              class="shadow-[0px_7px_29px_0px_rgba(100,100,111,0.2)] flex items-center py-[20px] px-[30px]"
+            >
+              <div
+                class="mr-[15px] w-[56px] h-[56px] rounded-full flex items-center justify-center bg-[#ce1212]"
+              >
+                <i class="fa-regular fa-envelope text-2xl text-white"></i>
+              </div>
+              <div>
+                <h3 class="text-[#636669] mb-[5px] text-[20px] font-medium">
+                  Email Us
+                </h3>
+                <p>info@example.com</p>
+              </div>
+            </div>
+            <div
+              class="shadow-[0px_7px_29px_0px_rgba(100,100,111,0.2)] flex items-center py-[20px] px-[30px]"
+            >
+              <div
+                class="mr-[15px] w-[56px] h-[56px] rounded-full flex items-center justify-center bg-[#ce1212]"
+              >
+                <i class="fa-regular fa-clock text-2xl text-white"></i>
+              </div>
+              <div>
+                <h3 class="text-[#636669] mb-[5px] text-[20px] font-medium">
+                  Opening Hours
+                </h3>
+                <p>Mon-Sat: 11AM - 23PM; Sunday: Closed</p>
+              </div>
             </div>
           </div>
           <div
-            class="mt-[50px] px-[12px] flex flex-col items-center text-center"
+            class="shadow-[0px_7px_29px_0px_rgba(100,100,111,0.2)] p-[30px] my-[30px]"
           >
-            <img
-              src="src/img/menu-item-2.png"
-              alt=""
-              class="px-[60px] mb-[15px]"
-            />
-            <div>
-              <h4 class="mb-[5px] text-[24px] font-bold">Aut Luia</h4>
-              <p class="mb-[5px] text-[#909294]">
-                Lorem, deren, trataro, filede, nerada
-              </p>
-              <p class="mb-[16px] text-[24px] text-[#ce1212] font-bold">
-                $14.95
-              </p>
+            <div class="grid grid-cols-1 md:grid-cols-2">
+              <div class="px-[12px] mt-[24px]">
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  class="w-full bg-white py-[10px] px-[15px] border-2 border-[#cdcdce] focus:border-[#ce1212] duration-100 outline-none"
+                />
+              </div>
+              <div class="px-[12px] mt-[24px]">
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  class="w-full bg-white py-[10px] px-[15px] border-2 border-[#cdcdce] focus:border-[#ce1212] duration-100 outline-none"
+                />
+              </div>
             </div>
-          </div>
-          <div
-            class="mt-[50px] px-[12px] flex flex-col items-center text-center"
-          >
-            <img
-              src="src/img/menu-item-3.png"
-              alt=""
-              class="px-[60px] mb-[15px]"
-            />
-            <div>
-              <h4 class="mb-[5px] text-[24px] font-bold">Est Eligendi</h4>
-              <p class="mb-[5px] text-[#909294]">
-                Lorem, deren, trataro, filede, nerada
-              </p>
-              <p class="mb-[16px] text-[24px] text-[#ce1212] font-bold">
-                $8.95
-              </p>
+            <div class="px-[12px] mt-[24px]">
+              <input
+                type="text"
+                placeholder="Subject"
+                class="w-full bg-white py-[10px] px-[15px] border-2 border-[#cdcdce] focus:border-[#ce1212] duration-100 outline-none"
+              />
             </div>
-          </div>
-          <div
-            class="mt-[50px] px-[12px] flex flex-col items-center text-center"
-          >
-            <img
-              src="src/img/menu-item-4.png"
-              alt=""
-              class="px-[60px] mb-[15px]"
-            />
-            <div>
-              <h4 class="mb-[5px] text-[24px] font-bold">Eos Luibusdam</h4>
-              <p class="mb-[5px] text-[#909294]">
-                Lorem, deren, trataro, filede, nerada
-              </p>
-              <p class="mb-[16px] text-[24px] text-[#ce1212] font-bold">
-                $12.95
-              </p>
+            <div class="px-[12px] mt-[24px]">
+              <textarea
+                class="w-full h-[150px] bg-white py-[10px] px-[15px] border-2 border-[#cdcdce] focus:border-[#ce1212] duration-100 outline-none"
+                placeholder="Message"
+              ></textarea>
             </div>
-          </div>
-          <div
-            class="mt-[50px] px-[12px] flex flex-col items-center text-center"
-          >
-            <img
-              src="src/img/menu-item-5.png"
-              alt=""
-              class="px-[60px] mb-[15px]"
-            />
-            <div>
-              <h4 class="mb-[5px] text-[24px] font-bold">Eos Luibusdam</h4>
-              <p class="mb-[5px] text-[#909294]">
-                Lorem, deren, trataro, filede, nerada
-              </p>
-              <p class="mb-[16px] text-[24px] text-[#ce1212] font-bold">
-                $12.95
-              </p>
-            </div>
-          </div>
-          <div
-            class="mt-[50px] px-[12px] flex flex-col items-center text-center"
-          >
-            <img
-              src="src/img/menu-item-6.png"
-              alt=""
-              class="px-[60px] mb-[15px]"
-            />
-            <div>
-              <h4 class="mb-[5px] text-[24px] font-bold">Laboriosam Direva</h4>
-              <p class="mb-[5px] text-[#909294]">
-                Lorem, deren, trataro, filede, nerada
-              </p>
-              <p class="mb-[16px] text-[24px] text-[#ce1212] font-bold">
-                $9.95
-              </p>
+            <div class="flex items-center justify-center mt-[16px]">
+              <button
+                class="py-[10px] px-[30px] rounded-4xl text-white bg-[#ce1212] hover:bg-[#d53535] duration-200"
+              >
+                Send message
+              </button>
             </div>
           </div>
         </div>
       </section>
     </main>
+    <footer class="bg-[#1f1f24] text-white py-[40px] px-[12px] lg:px-0">
+      <div class="container">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-[40px]"
+        >
+          <div class="flex gap-4">
+            <i
+              class="fa-solid fa-location-dot text-[#ce1212] text-[24px] mt-1 shrink-0"
+            ></i>
+            <div class="text-white">
+              <h4 class="font-bold text-[18px] mb-[10px]">Address</h4>
+              <p class="text-[14px]">A108 Adam Street</p>
+              <p class="text-[14px]">New York, NY 535022</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <i
+              class="fa-solid fa-phone text-[#ce1212] text-[24px] mt-1 shrink-0"
+            ></i>
+            <div class="text-white">
+              <h4 class="font-bold text-[18px] mb-[10px]">Contact</h4>
+              <p class="text-[14px]">
+                <span class="font-semibold">Phone:</span> +1 5589 55488 55
+              </p>
+              <p class="text-[14px]">
+                <span class="font-semibold">Email:</span>
+                info@example.com
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-4 text-white">
+            <i
+              class="fa-regular fa-clock text-[#ce1212] text-[24px] mt-1 shrink-0"
+            ></i>
+            <div>
+              <h4 class="font-bold text-[18px] mb-[10px]">Opening Hours</h4>
+              <p class="text-[14px]">
+                <span class="font-semibold">Mon-Sat:</span> 11AM - 23PM
+              </p>
+              <p class="text-[14px]">
+                <span class="font-semibold">Sunday:</span> Closed
+              </p>
+            </div>
+          </div>
+          <div>
+            <h4 class="font-bold text-[18px] mb-[16px]">Follow Us</h4>
+            <div class="flex gap-3">
+              <a
+                href=""
+                class="w-[40px] h-[40px] rounded-full border border-[#6e6e6e] flex items-center justify-center hover:border-[#ce1212] duration-200"
+              >
+                <i
+                  class="fa-brands fa-x-twitter text-[16px] text-[#6e6e6e] hover:text-[#ce1212]"
+                ></i>
+              </a>
+              <a
+                href=""
+                class="w-[40px] h-[40px] rounded-full border border-[#6e6e6e] flex items-center justify-center hover:border-[#ce1212] duration-200"
+              >
+                <i
+                  class="fa-brands fa-facebook-f text-[16px] text-[#6e6e6e] hover:text-[#ce1212]"
+                ></i>
+              </a>
+              <a
+                href=""
+                class="w-[40px] h-[40px] rounded-full border border-[#6e6e6e] flex items-center justify-center hover:border-[#ce1212] duration-200"
+              >
+                <i
+                  class="fa-brands fa-instagram text-[16px] text-[#6e6e6e] hover:text-[#ce1212]"
+                ></i>
+              </a>
+              <a
+                href=""
+                class="w-[40px] h-[40px] rounded-full border border-[#6e6e6e] flex items-center justify-center hover:border-[#ce1212] duration-200"
+              >
+                <i
+                  class="fa-brands fa-linkedin-in text-[16px] text-[#6e6e6e] hover:text-[#ce1212]"
+                ></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="border-t border-[#333] pt-[30px] text-center">
+          <p class="text-[#bdbdbd] text-[14px] mb-[6px]">
+            © Copyright <span class="text-white font-bold">Yummy</span> All
+            Rights Reserved
+          </p>
+          <p class="text-[#bdbdbd] text-[14px]">
+            Designed by
+            <a href="" class="text-[#ce1212]">BootstrapMade</a> Distributed by
+            <a href="" class="text-[#ce1212]">ThemeWagon</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+    <script src="src/js/data.js"></script>
+    <script src="src/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4/dist/js/splide.min.js"></script>
   </body>
 </html>

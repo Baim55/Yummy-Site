@@ -69,3 +69,50 @@ nav ul a.active::before {
 .animated {
   animation: up-down 1.5s ease-in-out infinite alternate-reverse both;
 }
+
+.bg1 {
+  position: relative;
+  height: 100%;
+}
+
+.bg1::before {
+  content: "";
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  inset: 0;
+}
+
+.bg1 > * {
+  position: relative;
+  z-index: 2;
+}
+
+.splide__pagination {
+  position: static;
+  margin-top: 25px;
+}
+
+.splide__pagination__page {
+  width: 10px;
+  height: 10px;
+  background: #d1d5db;
+  opacity: 1;
+}
+
+.splide__pagination__page.is-active {
+  background: #ce1212;
+}
+
+#gallery-slider .splide__track {
+  padding: 20px 0;
+}
+
+#gallery-slider .splide__slide {
+  transition: transform 0.3s ease;
+}
+
+#gallery-slider .splide__slide.is-active {
+  transform: scale(1.15);
+  z-index: 10;
+  overflow: hidden;
+}
